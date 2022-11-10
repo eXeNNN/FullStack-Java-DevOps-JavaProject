@@ -1,0 +1,25 @@
+<div class="card my-5" style="width: 50%; margin: 0 auto; background-color: lightgrey;">
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-black">
+                <tr>
+                    <th style="cursor: pointer;" [appSort]="types" data-order="desc" data-name="id" scope="col">ID</th>
+                    <th style="cursor: pointer;" [appSort]="types" data-order="desc" data-name="type" scope="col">Type</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let type of types let i = index">
+                    <td>{{ type.id }}</td>
+                    <td>{{ type.type }}</td>
+                    <td style="text-align: center;">
+                        <button type="button" routerLink="../addusertype/{{type.id}}" class="btn btn-info">Edit</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" (click)="remove(i)" class="btn btn-danger">Remove</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="text-center" style="color: red; font-size: 3em;">{{ message }}</div>

@@ -1,0 +1,49 @@
+<div class="card my-5" style="width: 50%; margin: 0 auto; background-color: lightgrey;">
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-black">
+                <tr>
+                    <th style="cursor: pointer;" [appSort]="users" data-order="desc" data-name="type" scope="col">Type User</th>
+                    <th style="cursor: pointer;" [appSort]="users" data-order="desc" data-name="name" scope="col">Name</th>
+                    <th style="cursor: pointer;" [appSort]="users" data-order="desc" data-name="firstName" scope="col">First Name</th>
+                    <th style="cursor: pointer;" [appSort]="users" data-order="desc" data-name="email" scope="col">Email</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users let i = index">
+                    <td>{{ user.type }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.email }}</td>
+                    <td style="text-align: center;">
+                        <button type="button" routerLink="../adduser/{{user.id}}" class="btn btn-info">Edit</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" (click)="remove(i)" class="btn btn-danger">Remove</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" (click)="open(content, i)" class="btn btn-success">User Info</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="text-center" style="color: red; font-size: 3em;">{{ message }}</div>
+
+<!-- USER INFO MODAL -->
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">User's Information</h4>
+    </div>
+    <div class="modal-body">
+      <ul style="list-style-type: none;">
+        <li><span style="font-weight: bolder;">User's Type --></span> {{ users[userIndex].type }}</li><br>
+        <li><span style="font-weight: bolder;">User's Name --></span> {{ users[userIndex].name }}</li><br>
+        <li><span style="font-weight: bolder;">User's First Name --></span> {{ users[userIndex].firstName }}</li><br>
+        <li><span style="font-weight: bolder;">User's Email --></span> {{ users[userIndex].email }}</li>
+      </ul>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+    </div>
+</ng-template>
