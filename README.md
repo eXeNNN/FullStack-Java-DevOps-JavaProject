@@ -1,6 +1,6 @@
 # FullStack-Java-DevOps-JavaProject
 
-Fullstack JAva project that facilitates profile management.
+Fullstack Java project that facilitates profile management.
 With this application it is possible to create a user type (administrator, commercial ...), to create a user, to list the user type and the users.
 
 This application is desgined using SpringBoot (backend, folder JavaProject) to create a MySQL database and the options of removing, editing and viewing users 
